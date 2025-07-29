@@ -1,0 +1,22 @@
+<div class="banner">
+  <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="60" />
+  <h2>Buscar usuarios en GitHub</h2>
+</div>
+
+<div class="search-box">
+<input type="text" (input)="onSearch($event)" />
+
+</div>
+
+<ul class="results" *ngIf="users.length > 0">
+  <li *ngFor="let user of users">
+    <img [src]="user.avatar_url" alt="avatar" />
+    <a [href]="user.html_url" target="_blank">{{ user.login }}</a>
+  </li>
+</ul>
+
+<p *ngIf="!isLoading && hasSearched && users.length === 0">
+  No se encontraron usuarios.
+</p>
+
+<p *ngIf="isLoading">Buscando...</p>
